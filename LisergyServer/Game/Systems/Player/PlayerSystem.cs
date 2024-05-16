@@ -1,5 +1,7 @@
 ﻿using Game.Engine.ECS;
+using Game.Network.ClientPackets;
 using Game.Network.ServerPackets;
+using Game.Systems.ActionPoints;
 using Game.Systems.FogOfWar;
 
 namespace Game.Systems.Player
@@ -13,8 +15,14 @@ namespace Game.Systems.Player
         public override void RegisterListeners()
         {
             Game.Network.On<BattleResultPacket>(OnBattleResultPacket);
+            Game.Network.On<TakeTurnPacket>(TakeTurn);
             EntityEvents.On<TileVisibilityChangedForPlayerEvent>(OnTileVisibilityChanged);
 
+        }
+        
+        private static void TakeTurn(TakeTurnPacket p)
+        {
+            p.Sender.EntityLogic.Player.TakeTurn();
         }
 
         /// <summary>

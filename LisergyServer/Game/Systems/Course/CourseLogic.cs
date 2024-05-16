@@ -6,6 +6,7 @@ using Game.Engine.Events;
 using Game.Engine.ECS;
 using Game.Engine.DataTypes;
 using Game.Engine.Scheduler;
+using Game.Systems.Party;
 using Game.World;
 
 namespace Game.Systems.Movement
@@ -15,6 +16,21 @@ namespace Game.Systems.Movement
         public bool TryStartMovement(List<Location> sentPath, CourseIntent intent)
         {
             var owner = Game.Players.GetPlayer(Entity.OwnerID);
+
+            var courseIntent = EventPool<CourseIntentionEvent>.Get();
+            courseIntent.Intent = intent;
+            courseIntent.Path = sentPath;
+            courseIntent.Entity = Entity;
+            courseIntent.Cancelled = false;
+            Entity.Components.CallEvent(courseIntent);
+            EventPool<CourseIntentionEvent>.Return(courseIntent);
+
+            if (courseIntent.Cancelled)
+            {
+                Game.Log.Debug("Course Cancelled by other system");
+                return false;
+            }
+            
             foreach (var position in sentPath)
             {
                 var tile = Game.World.Map.GetTile(position.X, position.Y);

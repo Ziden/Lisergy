@@ -20,7 +20,7 @@ namespace Game.Engine.DataTypes
         /// 0 = disabled.
         /// This is just during initial development later can think a better solution for debugging
         /// </summary>
-        internal static ulong DEBUG_MODE = 0;
+        public static ulong DEBUG_MODE = 0;
 
         /// <summary>
         /// Sets whats to be the next generated game id

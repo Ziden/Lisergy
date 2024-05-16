@@ -34,8 +34,10 @@ namespace UnitTests
             _party = _player.GetParty(0);
             _logs = _game.TestMap.GetTile(5, 5);
             _party.EntityLogic.Map.SetPosition(_logs.GetNeighbor(Direction.SOUTH));
+            _party.EntityLogic.ActionPoints.SetActionPoints(255);
             _scheduler = _game.Scheduler as GameScheduler;
             _logs.SpecId = TestTiles.FOREST.ID;
+           
         }
 
         [Test]
@@ -181,7 +183,7 @@ namespace UnitTests
         {
             var tileResourceBefore = _logs.Get<TileResourceComponent>();
 
-            _party.EntityLogic.Harvesting.StartHarvesting(_logs);
+            Assert.IsTrue(_party.EntityLogic.Harvesting.StartHarvesting(_logs));
             var totalTime = _logs.HarvestPointSpec.ResourceAmount * _logs.HarvestPointSpec.HarvestTimePerUnit;
 
             // Advance half of the harvesting time

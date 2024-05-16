@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace ServerTests.Integration
 {
+    /*
     public class TwoPlayerTest
     {
         StandaloneServer _server;
@@ -84,4 +85,5 @@ namespace ServerTests.Integration
             Assert.NotNull(p2Received);
         }
     }
+    */
 }

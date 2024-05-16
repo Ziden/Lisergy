@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Game", "Game\Game.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameData", "GameData\GameData.csproj", "{5B793397-7989-4CAE-A572-5AC909B8F91F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerTests", "ServerTests\ServerTests.csproj", "{4584F2EF-E15F-479C-BEC9-3DEDDC525658}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{4584F2EF-E15F-479C-BEC9-3DEDDC525658}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameDataTest", "GameDataTest\GameDataTest.csproj", "{C243FA12-2F86-4682-8FB9-BFE65D0C3337}"
 EndProject
@@ -29,6 +29,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameServices", "GameServices\GameServices.csproj", "{849FC0A5-04E4-46E3-A314-5C27040153A9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDL", "RedisMagic\SDL.csproj", "{FC963FB0-0E8C-4A83-837A-948CD48EDAEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmokeTests", "SmokeTests\SmokeTests.csproj", "{483A5A4E-2B2C-4A7C-B82F-26EECD4B7FC7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,6 +82,10 @@ Global
 		{FC963FB0-0E8C-4A83-837A-948CD48EDAEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC963FB0-0E8C-4A83-837A-948CD48EDAEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC963FB0-0E8C-4A83-837A-948CD48EDAEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{483A5A4E-2B2C-4A7C-B82F-26EECD4B7FC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{483A5A4E-2B2C-4A7C-B82F-26EECD4B7FC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{483A5A4E-2B2C-4A7C-B82F-26EECD4B7FC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{483A5A4E-2B2C-4A7C-B82F-26EECD4B7FC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

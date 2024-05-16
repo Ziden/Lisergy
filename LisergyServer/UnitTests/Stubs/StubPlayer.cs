@@ -56,7 +56,9 @@ namespace ServerTests
 
         public void SendMoveRequest(PartyEntity p, TileEntity t, CourseIntent intent)
         {
+         
             var path = t.Chunk.Map.FindPath(p.Tile, t).Select(pa => new Location(pa.X, pa.Y)).ToList();
+            p.EntityLogic.ActionPoints.SetActionPoints((byte)path.Count);
             var ev = new MoveRequestPacket() { Path = path, PartyIndex = p.PartyIndex, Intent = intent };
             ev.Sender = this;
             _network.IncomingPackets.Call(ev);

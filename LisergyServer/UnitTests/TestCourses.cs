@@ -29,10 +29,12 @@ namespace UnitTests
             _player = _game.GetTestPlayer();
             _path = new List<Location>();
             _party = _player.GetParty(0);
+            _party.EntityLogic.ActionPoints.SetActionPoints(255);
         }
 
         private void SendMoveRequest()
         {
+            _party.EntityLogic.ActionPoints.SetActionPoints((byte)_path.Count);
             var ev = new MoveRequestPacket() { Path = _path, PartyIndex = _party.PartyIndex };
             ev.Sender = _player;
             _game.HandleClientEvent(_player, ev);
@@ -92,6 +94,7 @@ namespace UnitTests
             _player.ReceivedPackets.Clear();
 
             // Moving player2 to 5 7 which is slightly outside p1 vision
+            player2.EntityLogic.Player.TakeTurn();
             _path.Add(new Location(5, 7));
             _game.HandleClientEvent(player2, new MoveRequestPacket() { Path = _path, PartyIndex = player2Party.PartyIndex });
             _game.GameScheduler.Tick(_game.GameScheduler.Now + player2Party.Course.Delay);

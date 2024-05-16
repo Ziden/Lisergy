@@ -2,6 +2,7 @@
 using Game.Systems.Battler;
 using Game.Systems.Map;
 using Game.Systems.Movement;
+using Game.Systems.Party;
 using Game.Systems.Player;
 using Game.Systems.Resources;
 
@@ -18,6 +19,7 @@ namespace Game
         public CourseLogic Movement { get; }
         public HarvestingLogic Harvesting { get; }
         public CargoLogic Cargo { get; }
+        public ActionPointsLogic ActionPoints { get; }
     }
 
     /// <summary>
@@ -31,6 +33,7 @@ namespace Game
         public CourseLogic Movement => _systems.EntityMovement.GetLogic(_entity);
         public HarvestingLogic Harvesting => _systems.Harvesting.GetLogic(_entity);
         public CargoLogic Cargo => _systems.Cargo.GetLogic(_entity);
+        public ActionPointsLogic ActionPoints => _systems.ActionPoints.GetLogic(_entity);
 
         private ISystems _systems;
         private IEntity _entity;

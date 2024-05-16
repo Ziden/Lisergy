@@ -128,8 +128,6 @@ namespace Game.Systems.Resources
             var harvesting = Entity.Components.Get<HarvestingComponent>();
             var tile = Game.World.Map.GetTile(harvesting.Tile.X, harvesting.Tile.Y);
             var startTime = DateTime.FromBinary(harvesting.StartedAt);
-        
-            //
             var tileSpec = Game.Specs.Tiles[tile.SpecId];
             if (!tileSpec.ResourceSpotSpecId.HasValue)
             {

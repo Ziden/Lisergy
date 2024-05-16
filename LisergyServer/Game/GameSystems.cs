@@ -34,6 +34,7 @@ namespace Game
         HarvestingSystem Harvesting { get; }
         ResourceSystem Resources { get; }
         CargoSystem Cargo { get; }
+        ActionsPointSystem ActionPoints { get; }
         void CallEvent(IEntity entity, IBaseEvent ev);
     }
 
@@ -60,6 +61,7 @@ namespace Game
             AddSystem(Harvesting = new HarvestingSystem(game));
             AddSystem(Resources = new ResourceSystem(game));
             AddSystem(Cargo = new CargoSystem(game));
+            AddSystem(ActionPoints = new ActionsPointSystem(game));
         }
 
         public MapSystem Map { get; private set; }
@@ -76,6 +78,7 @@ namespace Game
         public HarvestingSystem Harvesting { get; private set; }
         public ResourceSystem Resources { get; private set; }
         public CargoSystem Cargo { get; private set; }
+        public ActionsPointSystem ActionPoints { get; private set; }
 
         private void AddSystem<ComponentType>(GameSystem<ComponentType> system) where ComponentType : unmanaged, IComponent 
         {

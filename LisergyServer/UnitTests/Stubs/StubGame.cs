@@ -12,6 +12,7 @@ using GameDataTest;
 using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
+using Game.Systems.Party;
 
 namespace ServerTests
 {
@@ -95,6 +96,7 @@ namespace ServerTests
             var tile = World.Map.GetTile(x, y);
             player.EntityLogic.Player.PlaceNewPlayer(World.Map.GetTile(x, y));
             Entities.DeltaCompression.SendDeltaPackets(player);
+            //player.Parties[0].Components.Remove<ActionPointsComponent>();
             return player;
         }
 

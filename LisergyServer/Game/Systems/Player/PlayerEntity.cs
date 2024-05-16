@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using Game.Systems.ActionPoints;
 
 namespace Game.Systems.Player
 {
@@ -33,6 +34,7 @@ namespace Game.Systems.Player
             Game = game;
             Components = new ComponentSet(this);
             Components.Add<PlayerComponent>();
+            Components.Add<PlayerTurnsComponent>();
             Components.AddReference(new PlayerData());
             Components.AddReference(new VisibilityReferences());
             Profile = profile;

@@ -9,13 +9,14 @@ using Game.World;
 using GameData;
 using GameData.Specs;
 using System.Collections.Generic;
+using Game.Systems.ActionPoints;
 
 namespace Game.Systems.Player
 {
     /// <summary>
     /// Interacts with player specific data
     /// </summary>
-    public class PlayerLogic : BaseEntityLogic<PlayerComponent>
+    public unsafe class PlayerLogic : BaseEntityLogic<PlayerComponent>
     {
         private PlayerData Data => Entity.Components.GetReference<PlayerData>();
  
@@ -78,6 +79,16 @@ namespace Game.Systems.Player
             Game.Systems.Map.GetLogic(party).SetPosition(partyTile);
             Game.Log.Debug($"Placed new player {Entity} in {t}");
             return;
+        }
+
+        public void TakeTurn()
+        {
+            var p = Entity as PlayerEntity;
+            foreach (var party in p.Parties)
+            {
+                party.EntityLogic.ActionPoints.SetActionPoints(1);
+            }
+            p.Components.GetPointer<PlayerTurnsComponent>()->Turns++;
         }
 
         /// <summary>

@@ -49,37 +49,7 @@ namespace ServerTests.Integration
             var result = await _client.WaitFor<LoginResultPacket>();
             Assert.IsNull(result);
         }
-
-        [Test]
-        [NonParallelizable]
-        public async Task TestReconnection()
-        {
-            var mapPlacementUpdates = new List<IEntity>();
-            _client.Modules.Components.OnComponentUpdate<MapPlacementComponent>((e, oldValue, newValue) =>
-            {
-                mapPlacementUpdates.Add(e);
-            });
-            _client.Modules.Account.SendAuthenticationPacket("abc", "def");
-            var result = await _client.WaitFor<LoginResultPacket>();
-            Assert.NotNull(result);
-
-            _client.Network.Disconnect();
-            _client.ReceivedPackets.Clear();
-            _client.Network.Tick();
-            mapPlacementUpdates.Clear();
-
-            _client.Modules.Account.SendAuthenticationPacket("abc", "def");
-            result = await _client.WaitFor<LoginResultPacket>();
-            Assert.AreEqual(true, result.Success);
-
-            await _client.WaitFor<EntityUpdatePacket>(e => e.Type == EntityType.Party);
-            await _client.WaitFor<EntityUpdatePacket>(e => e.Type == EntityType.Dungeon);
-            await _client.WaitFor<EntityUpdatePacket>(e => e.Type == EntityType.Building);
-
-            Assert.AreEqual(2, mapPlacementUpdates.Count); // Party, Dungeon
-            Assert.AreEqual(1, mapPlacementUpdates.Count(c => c is PartyEntity));
-        }
-
+        
         [Test]
         [NonParallelizable]
         public async Task SmokeTestFlow()

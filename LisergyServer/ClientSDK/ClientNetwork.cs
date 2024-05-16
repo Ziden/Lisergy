@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Telepathy;
 
-[assembly: InternalsVisibleTo("ServerTests")]
+[assembly: InternalsVisibleTo("UnitTests")]
 namespace ClientSDK
 {
     public class ClientNetwork : IGameNetwork, IEventListener

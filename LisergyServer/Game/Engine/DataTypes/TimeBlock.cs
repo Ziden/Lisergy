@@ -21,6 +21,11 @@ namespace Game.Engine.DataTypes
         /// Gets the total time required for this task
         /// </summary>
         public TimeSpan TotalBlockTime => EndTime - StartTime;
+
+        public override string ToString()
+        {
+            return $"<TimeBlock {StartTime} to {EndTime}>";
+        }
     }
 
     /// <summary>
@@ -72,9 +77,8 @@ namespace Game.Engine.DataTypes
             snap.TimeInBlock = now - block.StartTime;
             snap.TimeUntilEndOfblock = block.EndTime - now;
             snap.TimeBlock = block;
-            snap.Percentagage = Math.Max(1, snap.TimeInBlock / block.TotalBlockTime);
+            snap.Percentagage = Math.Min(1, snap.TimeInBlock / block.TotalBlockTime);
             return snap;
         }
-
     }
 }
